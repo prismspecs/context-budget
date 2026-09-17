@@ -1,0 +1,33 @@
+{
+  "name": "context-budget",
+  "version": "1.0.0",
+  "description": "Cross-harness context bloat auditor, Turn-0 request inspection proxy, and compaction toolkit for Pi, Claude Code, OpenCode, and Antigravity.",
+  "type": "module",
+  "main": "src/audit.mjs",
+  "bin": {
+    "context-budget": "./bin/context-budget.mjs",
+    "context-proxy": "./bin/proxy.mjs"
+  },
+  "scripts": {
+    "audit": "node bin/context-budget.mjs audit",
+    "proxy": "node bin/context-budget.mjs proxy",
+    "meter": "node bin/context-budget.mjs meter",
+    "test": "node test/audit.test.mjs"
+  },
+  "keywords": [
+    "ai-agent",
+    "context-window",
+    "token-optimizer",
+    "claude-code",
+    "pi-agent",
+    "antigravity",
+    "opencode",
+    "mcp",
+    "token-meter"
+  ],
+  "author": "Grayson Earle <graysonearle@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
