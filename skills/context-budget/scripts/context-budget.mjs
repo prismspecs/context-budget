@@ -2,13 +2,13 @@
 
 /**
  * context-budget CLI
- * Unified cross-harness context bloat auditor, turn-0 request proxy, and triage tool.
+ * Unified cross-harness context bloat auditor, Turn-0 request inspection proxy, and compaction helper.
  */
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
-import { runAudit } from './audit.mjs';
+import { runAudit } from '../src/audit.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -36,7 +36,9 @@ Examples:
 
 if (command === 'audit') {
   const jsonFlag = args.includes('--json');
-  runAudit({ json: jsonFlag });
+  const dirArg = args.slice(1).find((a) => !a.startsWith('-'));
+  const projectDir = dirArg ? path.resolve(dirArg) : process.cwd();
+  runAudit({ json: jsonFlag, projectDir });
 } else if (command === 'proxy') {
   const proxyScript = path.join(__dirname, 'proxy.mjs');
   const child = spawn(process.execPath, [proxyScript, ...args.slice(1)], {
