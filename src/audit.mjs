@@ -97,7 +97,7 @@ export function auditPi() {
   const mcpServers = Object.keys(mcpConfig.mcpServers || {});
 
   return {
-    harness: 'Pi Coding Agent',
+    harness: 'Pi Harness',
     packages,
     mcpServers,
     compaction: settings.compaction || null,
@@ -293,7 +293,7 @@ export function evaluateFindings(agy, pi, claude, opencode, project) {
     findings.push({
       severity: 'MEDIUM',
       category: 'Pi Instrumentation',
-      title: `Pi Coding Agent lacks context inspection & compaction extension`,
+      title: `Pi Harness lacks context inspection & compaction extension`,
       description: `pi-context or pi-context-tools is not installed in ~/.pi/agent/settings.json.`,
       action: `Run 'pi install npm:pi-context' to enable /context dashboard and compaction tools.`,
     });
@@ -333,7 +333,7 @@ export function runAudit(options = {}) {
       `${agy.skills.length} global skills, rules: ~${agy.rules.tokens} tok`
   );
   console.log(
-    `  • ${bold('Pi Coding Agent')}: ${pi.packages.length} packages, ${pi.mcpServers.length} global MCP servers [${pi.mcpServers.join(', ') || 'none'}], ` +
+    `  • ${bold('Pi Harness')}: ${pi.packages.length} packages, ${pi.mcpServers.length} global MCP servers [${pi.mcpServers.join(', ') || 'none'}], ` +
       `compaction reserve: ${pi.compaction?.reserveTokens || 'default'} tok`
   );
   console.log(
